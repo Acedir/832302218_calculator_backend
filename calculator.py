@@ -44,6 +44,12 @@ def tokenize(expr: str):
             tokens.append(Token(Token.OP, op))
             i += 1
             continue
+        if ch == "%":
+            # % 视为除以 100
+            tokens.append(Token(Token.OP, "/"))
+            tokens.append(Token(Token.NUMBER, 100))
+            i += 1
+            continue
 
         # 左右括号
         if ch == "(":
